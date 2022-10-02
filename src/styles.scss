@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'bootstrap/scss/bootstrap';
+
+form {
+  div.group {
+    @extend .mt-2;
+
+    label {
+      font-weight: bold;
+      @extend .mb-2;
+    }
+
+    input, textarea {
+      @extend .form-control;
+      @extend .mb-2
+    }
+  }
+}
+
+.feedback-error {
+  @extend .small, .mt-1, .text-danger;
+}
