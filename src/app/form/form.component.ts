@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, FormArray, Validators, FormRecord } from '@angular/forms';
 import { AsyncValidatorService } from '../async-validator.service';
+import { exactValue, myTestValidator } from '../validators';
 
 @Component({
   selector: 'app-form',
@@ -9,6 +10,8 @@ import { AsyncValidatorService } from '../async-validator.service';
 })
 export class FormComponent {
 
+  challengeString = 'Katze';
+
   userForm = new FormGroup({
     username: new FormControl('', {
       nonNullable: true,
@@ -16,6 +19,7 @@ export class FormComponent {
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(32),
+        // myTestValidator('eins', 2)
       ]
     }),
     name: new FormControl('', {
@@ -29,7 +33,12 @@ export class FormComponent {
       pw1: new FormControl('', { nonNullable: true }),
       pw2: new FormControl('', { nonNullable: true }),
     }),
-    confirm: new FormControl('', { nonNullable: true })
+    confirm: new FormControl('', {
+      nonNullable: true,
+      validators: [
+        exactValue(this.challengeString)
+      ]
+    })
   });
 
   constructor(private av: AsyncValidatorService) {}

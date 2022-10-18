@@ -26,8 +26,12 @@
   </div>
 
   <div class="group">
-    <label>Confirmation</label>
-    <input type="text" formControlName="confirm">
+    <label>Confirmation</label><br>
+    Bitte den Text "{{ challengeString }}" eingeben:<br>
+    <input type="text" formControlName="confirm" [placeholder]="challengeString">
+    <div class="feedback-error" *ngIf="hasError('confirm', 'exactvalue')">
+      Es muss exakt "{{ challengeString }}" angegeben werden.
+    </div>
   </div>
 
   <!-- Button deaktivieren: [disabled]="userForm.invalid" -->
