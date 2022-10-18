@@ -4,13 +4,13 @@
   <div class="group">
     <label for="usernameInput">Username</label>
     <input type="text" id="usernameInput" formControlName="username">
-    <div class="feedback-error" *ngIf="isInvalid('username')">Der Username ist ungültig.</div>
+    <!--<div class="feedback-error" *ngIf="isInvalid('username')">Der Username ist ungültig.</div>
     <div class="feedback-error" *ngIf="hasError('username', 'minlength')">Der Username ist zu kurz.</div>
     <div class="feedback-error" *ngIf="hasError('username', 'maxlength')">Der Username ist zu lang.</div>
     <div class="feedback-error" *ngIf="hasError('username', 'required')">Der Username muss angegeben werden.</div>
-    <div class="feedback-error" *ngIf="hasError('username', 'usernameavailable')">Der Username ist bereits vergeben!</div>
+    <div class="feedback-error" *ngIf="hasError('username', 'usernameavailable')">Der Username ist bereits vergeben!</div>-->
 
-    <!--<app-form-errors controlName="username" [messages]="{ minlength: 'ZU KURZ' }"></app-form-errors>-->
+    <app-form-errors controlName="username"></app-form-errors>
 
     <pre>{{ userForm.get('username')?.errors | json }}</pre>
   </div>

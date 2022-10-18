@@ -21,7 +21,7 @@ export class FormComponent {
         // myTestValidator('eins', 2)
       ],
       asyncValidators: [this.av.usernameAvailable()],
-      updateOn: 'submit'
+      updateOn: 'blur'
     }),
     name: new FormControl('', {
       nonNullable: true,
