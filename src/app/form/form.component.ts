@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, FormArray, Validators, FormRecord } from '@angular/forms';
 import { AsyncValidatorService } from '../async-validator.service';
-import { exactValue, myTestValidator, onlyLetters, usernameLength } from '../validators';
+import { exactValue, myTestValidator, onlyLetters, passwordsMatch, usernameLength } from '../validators';
 
 @Component({
   selector: 'app-form',
@@ -29,9 +29,9 @@ export class FormComponent {
       ]
     }),
     password: new FormGroup({
-      pw1: new FormControl('', { nonNullable: true }),
-      pw2: new FormControl('', { nonNullable: true }),
-    }),
+      pw1: new FormControl('', { nonNullable: true, validators: [Validators.minLength(3)] }),
+      pw2: new FormControl('', { nonNullable: true, validators: [Validators.minLength(3)] }),
+    }, [passwordsMatch]),
     confirm: new FormControl('', {
       nonNullable: true,
       validators: [

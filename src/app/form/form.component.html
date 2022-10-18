@@ -22,7 +22,11 @@
   <div class="group" formGroupName="password">
     <label>Password</label>
     <input type="password" formControlName="pw1">
+    <div class="feedback-error" *ngIf="hasError('password.pw1', 'minlength')">Passwort zu kurz (3 Zeichen)</div>
     <input type="password" formControlName="pw2">
+
+    <div class="feedback-error" *ngIf="hasError('password', 'passwordsmatch')">Passwörter sind nicht gleich!!</div>
+    <pre>{{ userForm.get('password')?.errors | json }}</pre>
   </div>
 
   <div class="group">

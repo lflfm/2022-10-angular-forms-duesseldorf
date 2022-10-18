@@ -14,6 +14,27 @@ export const myTestValidator = function (param1: string, param2: number): Valida
   }
 }
 
+
+
+export const passwordsMatch: ValidatorFn = function(control) {
+  if (!(control instanceof FormGroup)) {
+    return null;
+  }
+
+  const pw1 = control.get('pw1');
+  const pw2 = control.get('pw2');
+
+  if (pw1 && pw2 && pw1.value && pw2.value && pw1.value !== pw2.value) {
+    return { passwordsmatch: true };
+  } else {
+    return null;
+  }
+}
+
+
+
+
+
 export const onlyLetters = Validators.pattern(/^[a-zA-Z\ ]*$/);
 
 export function onlyLetters2(): ValidatorFn {
