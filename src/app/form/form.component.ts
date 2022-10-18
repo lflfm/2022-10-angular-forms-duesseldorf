@@ -33,4 +33,32 @@ export class FormComponent {
   });
 
   constructor(private av: AsyncValidatorService) {}
+
+  isInvalid(controlName: string): boolean {
+    const control = this.userForm.get(controlName);
+    // return (control?.invalid && control?.touched) ?? false;
+    // return control ? (control.invalid && control.touched) : false;
+    return !!control && control.invalid && control.touched;
+  }
+
+  hasError(controlName: string, errorCode: string): boolean {
+    // "Hat ein bestimmtes Control einen bestimmten Error?"
+    const control = this.userForm.get(controlName);
+    return !!control && control.hasError(errorCode) && control.touched; // (control.touched || control.dirty);
+  }
+
+
+  submitForm() {
+    if (this.userForm.invalid) {
+      this.userForm.markAllAsTouched();
+      return;
+    }
+
+    // optionale Idee:
+    // this.formDisabled = true;
+    // im Template: [disabled]="formDisabled"
+
+    const formValue = this.userForm.getRawValue();
+    console.log('SUBMIT', formValue);
+  }
 }

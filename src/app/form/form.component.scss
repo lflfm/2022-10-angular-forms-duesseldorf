@@ -2,3 +2,12 @@ input.ng-touched.ng-invalid {
   border: 2px solid red;
   color: red;
 }
+
+input.ng-touched.ng-valid {
+  color: green;
+}
+
+button[type=submit][disabled] {
+  pointer-events: auto;
+  cursor: not-allowed;
+}
