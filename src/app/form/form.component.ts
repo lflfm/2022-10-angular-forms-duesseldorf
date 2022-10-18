@@ -19,7 +19,9 @@ export class FormComponent {
         Validators.required,
         usernameLength
         // myTestValidator('eins', 2)
-      ]
+      ],
+      asyncValidators: [this.av.usernameAvailable()],
+      updateOn: 'blur'
     }),
     name: new FormControl('', {
       nonNullable: true,

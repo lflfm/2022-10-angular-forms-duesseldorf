@@ -8,6 +8,7 @@
     <div class="feedback-error" *ngIf="hasError('username', 'minlength')">Der Username ist zu kurz.</div>
     <div class="feedback-error" *ngIf="hasError('username', 'maxlength')">Der Username ist zu lang.</div>
     <div class="feedback-error" *ngIf="hasError('username', 'required')">Der Username muss angegeben werden.</div>
+    <div class="feedback-error" *ngIf="hasError('username', 'usernameavailable')">Der Username ist bereits vergeben!</div>
 
     <!--<app-form-errors controlName="username" [messages]="{ minlength: 'ZU KURZ' }"></app-form-errors>-->
 
