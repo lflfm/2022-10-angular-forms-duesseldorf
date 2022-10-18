@@ -1,1 +1,9 @@
 <h2>Unser erstes Formular</h2>
+
+<form [formGroup]="userForm">
+  <div class="group">
+    <input type="text" formControlName="username">
+  </div>
+</form>
+
+<pre>{{ userForm.value | json }}</pre>
