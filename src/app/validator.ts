@@ -14,3 +14,13 @@ export const myTestValidatorFactory = function(param1: string, param2: number): 
     };
   }
 }
+
+export const challengeStringValidator = function(challengeString: string): ValidatorFn {
+  return function(control) {
+    if (control.value === challengeString)
+      return null;
+    return {
+      challengeString: true,
+    };
+  }
+}

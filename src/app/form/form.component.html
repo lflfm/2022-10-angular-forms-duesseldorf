@@ -25,7 +25,9 @@
 
   <div class="group">
     <label for="confirmInput">Confirmation</label>
+    <br>Bitte den Text "{{ challengeString }}" eingeben.<br>
     <input id="confirmInput" type="text" formControlName="confirm">
+    <div class="feedback-error" *ngIf="hasError('confirm','challengeString')">Bitte den Text "{{ challengeString }}" EXACT eingeben.</div>
   </div>
 
   <!-- <button class="btn btn-success" type="submit" [disabled]="userForm.invalid">Abschicken</button> -->

@@ -1,7 +1,7 @@
 import { asNativeElements, Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AsyncValidatorService } from '../async-validator.service';
-import { myTestValidator1, myTestValidatorFactory } from '../validator';
+import { challengeStringValidator, myTestValidator1, myTestValidatorFactory } from '../validator';
 
 @Component({
   selector: 'app-form',
@@ -9,6 +9,8 @@ import { myTestValidator1, myTestValidatorFactory } from '../validator';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent {
+
+  challengeString = 'Katze';
 
   userForm = new FormGroup({
     username: new FormControl('', { nonNullable: true,
@@ -31,7 +33,10 @@ export class FormComponent {
       pw1: new FormControl('', { nonNullable: true }),
       pw2: new FormControl('', { nonNullable: true })
     }),
-    confirm: new FormControl('', { nonNullable: true }),
+    confirm: new FormControl('', { nonNullable: true,
+     validators: [
+      challengeStringValidator(this.challengeString),
+     ], }),
   });
 
   constructor(private av: AsyncValidatorService) {}
