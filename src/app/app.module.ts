@@ -8,12 +8,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DynamicComponent } from './dynamic/dynamic.component';
 import { FormComponent } from './form/form.component';
+import { AddressFormComponent } from './address-form/address-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DynamicComponent,
-    FormComponent
+    FormComponent,
+    AddressFormComponent
   ],
   imports: [
     BrowserModule,

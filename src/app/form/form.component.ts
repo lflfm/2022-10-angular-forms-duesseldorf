@@ -35,6 +35,11 @@ export class FormComponent {
       this.createTagControl(),
       this.createTagControl(),
     ]),
+    addresses: new FormArray([
+      this.createAddressGroup(),
+      this.createAddressGroup(),
+      this.createAddressGroup(),
+    ]),
     password: new FormGroup({
       pw1: new FormControl('', { nonNullable: true, validators: [Validators.minLength(3)] }),
       pw2: new FormControl('', { nonNullable: true, validators: [Validators.minLength(3)] }),
@@ -48,6 +53,13 @@ export class FormComponent {
   });
 
   constructor(private av: AsyncValidatorService) {}
+
+  private createAddressGroup() {
+    return new FormGroup({
+      street: new FormControl('', { nonNullable: true }),
+      city: new FormControl('', { nonNullable: true }),
+    });
+  }
 
   isInvalid(controlName: string): boolean {
     const control = this.userForm.get(controlName);

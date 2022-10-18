@@ -38,6 +38,7 @@
       type="text" [formControlName]="i">
   </div>
 
+
   <div class="group">
     <label>Confirmation</label><br>
     Bitte den Text "{{ challengeString }}" eingeben:<br>
@@ -45,6 +46,12 @@
     <div class="feedback-error" *ngIf="hasError('confirm', 'exactvalue')">
       Es muss exakt "{{ challengeString }}" angegeben werden.
     </div>
+  </div>
+
+  <div class="group" formArrayName="addresses">
+    <label>Adressen</label>
+
+    <app-address-form *ngFor="let group of userForm.controls.addresses.controls" [group]="group"></app-address-form>
   </div>
 
   <!-- Button deaktivieren: [disabled]="userForm.invalid" -->
