@@ -30,6 +30,14 @@
     <pre>{{ userForm.get('password')?.errors | json }}</pre>
   </div>
 
+  <div class="group" formArrayName="tags">
+    <label>Tags</label>
+    <button type="button" class="btn btn-secondary" (click)="addTagControl()">+</button>
+
+    <input *ngFor="let c of userForm.controls.tags.controls; index as i"
+      type="text" [formControlName]="i">
+  </div>
+
   <div class="group">
     <label>Confirmation</label><br>
     Bitte den Text "{{ challengeString }}" eingeben:<br>

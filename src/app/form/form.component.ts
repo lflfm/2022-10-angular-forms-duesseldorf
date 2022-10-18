@@ -21,7 +21,7 @@ export class FormComponent {
         // myTestValidator('eins', 2)
       ],
       asyncValidators: [this.av.usernameAvailable()],
-      updateOn: 'blur'
+      updateOn: 'submit'
     }),
     name: new FormControl('', {
       nonNullable: true,
@@ -30,6 +30,11 @@ export class FormComponent {
         onlyLetters
       ]
     }),
+    tags: new FormArray([
+      this.createTagControl(),
+      this.createTagControl(),
+      this.createTagControl(),
+    ]),
     password: new FormGroup({
       pw1: new FormControl('', { nonNullable: true, validators: [Validators.minLength(3)] }),
       pw2: new FormControl('', { nonNullable: true, validators: [Validators.minLength(3)] }),
@@ -55,6 +60,16 @@ export class FormComponent {
     // "Hat ein bestimmtes Control einen bestimmten Error?"
     const control = this.userForm.get(controlName);
     return !!control && control.hasError(errorCode) && control.touched; // (control.touched || control.dirty);
+  }
+
+  addTagControl() {
+    this.userForm.controls.tags.push(
+      this.createTagControl()
+    );
+  }
+
+  private createTagControl() {
+    return new FormControl('', { nonNullable: true });
   }
 
 
