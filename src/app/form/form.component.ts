@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, FormArray, Validators, FormRecord } from '@angular/forms';
 import { AsyncValidatorService } from '../async-validator.service';
-import { exactValue, myTestValidator } from '../validators';
+import { exactValue, myTestValidator, onlyLetters, usernameLength } from '../validators';
 
 @Component({
   selector: 'app-form',
@@ -17,8 +17,7 @@ export class FormComponent {
       nonNullable: true,
       validators: [
         Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(32),
+        usernameLength
         // myTestValidator('eins', 2)
       ]
     }),
@@ -26,7 +25,7 @@ export class FormComponent {
       nonNullable: true,
       validators: [
         Validators.required,
-        Validators.pattern(/^[a-zA-Z\ ]*$/) // nur Buchstaben
+        onlyLetters
       ]
     }),
     password: new FormGroup({
