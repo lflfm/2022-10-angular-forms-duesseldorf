@@ -10,8 +10,21 @@ import { AsyncValidatorService } from '../async-validator.service';
 export class FormComponent {
 
   userForm = new FormGroup({
-    username: new FormControl('', { nonNullable: true }),
-    name: new FormControl('', { nonNullable: true }),
+    username: new FormControl('', {
+      nonNullable: true,
+      validators: [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(32),
+      ]
+    }),
+    name: new FormControl('', {
+      nonNullable: true,
+      validators: [
+        Validators.required,
+        Validators.pattern(/^[a-zA-Z\ ]*$/) // nur Buchstaben
+      ]
+    }),
     password: new FormGroup({
       pw1: new FormControl('', { nonNullable: true }),
       pw2: new FormControl('', { nonNullable: true }),
